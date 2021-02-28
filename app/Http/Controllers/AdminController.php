@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function home(Request $request)
+    public function home()
     {
         return view('admin.index');
     }

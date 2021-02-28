@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
@@ -27,6 +28,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/admin', [AdminController::class, 'home']);
 Route::get('/admin/responses', [AdminController::class, 'responses']);
 Route::get('/admin/change-status/{id}', [AdminController::class, 'changeStatus']);
+
+Route::get('/account', [AccountController::class, 'index']);
 
 Route::get('/', [PublicController::class, 'home']);
 Route::post('/send-response', [PublicController::class, 'sendResponse']);

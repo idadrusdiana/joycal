@@ -1,30 +1,133 @@
 @extends('layouts.master')
 
-<!-- <!-- <body class="hold-transition sidebar-mini"> -->
-  <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper"> -->
-    <!-- Content Header (Page header) -->
-    
-
-    <!-- <div class="form-group" style="width: 180px; padding: 15px;" >      
-    
-      <div class="form-group form-inline" style="width: 180px; margin-top: 10px;" >      
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>10</option>
-          <option>20</option>
-          <option>30</option>        
-        </select>
-        <label>&nbsp; 件表示</label>
-      </div>
-    </div> -->
 @section('content') 
     <!-- Main content -->
     <div class="content-wrapper">
       <div class="main-content">
         <div class="row">
-          <div class="col-sm-12 col-md-12" style="margin: 20px 0; text-align:center" >
-            <h2>顧客リスト</h2> &nbsp;         
-          </div>
+          <form class="container" id="form-input" method="post" action="<?= url('send-response') ?>" enctype="multipart/form-data">
+            <div class="row justify-content-center mt-3 r-mt-0 r-mb-1 mb-4">
+                <div class="col-md-9">                
+                        <!-- first name and last name -->
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <label>お名前</label>                                
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" name="name_first" class="form-control rounded" autocomplete="off" placeholder="姓">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" name="name_last" class="form-control rounded" autocomplete="off" placeholder="名">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- username -->
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <label>Username</label>                                
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" name="username" class="form-control rounded" autocomplete="off" placeholder="username">
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                          <div class="col-sm-4">
+                              <label>Password</label>                                
+                          </div>
+
+                          <div class="col-sm-8">
+                              <div class="row">
+                                  <div class="col-6">
+                                      <input type="text" name="password" class="form-control rounded" autocomplete="off" placeholder="Password">
+                                  </div>
+                                  <div class="col-6">
+                                      <input type="text" name="" class="form-control rounded" autocomplete="off" placeholder="konfrmasi">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <!-- gender -->
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <label>Merk</label>                              
+                            </div>
+
+                            <div class="col-sm-8 row">
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="type" type="radio" id="type-a" value="A" checked>
+                                        <label class="form-check-label" for="type-a">
+                                            A
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="type" type="radio" id="type-b" value="B">
+                                        <label class="form-check-label" for="type-b"">
+                                            B
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                  <div class="form-check">
+                                      <input class="form-check-input" name="type" type="radio" id="type-c" value="C">
+                                      <label class="form-check-label" for="type-c"">
+                                          C
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+
+                        <!-- birthday -->
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <label>Store Name</label>                                
+                            </div>
+
+                            <div class="col-sm-8 row">
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="store_name">
+                                        <option value="a">A</option>
+                                        <option value="b">B</option>
+                                        <option value="c">C</option>                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>                       
+
+                        <!-- email -->
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <label>メールアドレス</label>                                
+                            </div>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="shinsha.kau@kei-ichiman.com" name="email" />
+                            </div>
+                        </div>                        
+
+                        <div class="form-group text-center">
+                          <button type="submit" class="bg-blue btn-lg text-white ml-4" style="border-radius: 10px; width: 100px;">Save</button>                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+          </form>
           <div class="col-12">
             <div class="card">
               <div class="card-header">
@@ -49,18 +152,18 @@
                 <table id="example1" class="table table-bordered table-striped table-sm">
                   <thead>
                   <tr>
-                    <th width="40px">対応</th>
-                    <th width="70px">可否</th>
-                    <th>申込日</th>
-                    <th width="180px">名前</th>
-                    <th width="180px">フリガナ</th>
-                    <th width="40px">性別</th>
-                    <th width="120px">電話番号</th>
-                    <th width="70px">処理</th>
+                    <th width="40px" style="text-align: center">No</th>                    
+                    <th width="100px" style="text-align: center">Nama Lengkap</th>
+                    <th width="100px" style="text-align: center">Username</th>
+                    <th width="40px" style="text-align: center">Password</th>
+                    <th width="70px" style="text-align: center">Merk</th>
+                    <th width="120px" style="text-align: center">Nama Toko</th>
+                    <th width="120" style="text-align: center">Email</th>
+                    <th width="40px" style="text-align: center">Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                                    
+
                   </tbody>                
                 </table>
               </div>        
@@ -279,59 +382,10 @@
               ...d , range
             });
           }
-        },
-        "order": [[1, 'asc']],
-        "columns": [
-          {data: "_id", class: 'text-center', orderable: false, render: function () {
-            return `<input type="checkbox"/>`;
-          }},
-          {data: "id", orderable: false, render: function (obj, index, data) {
-            return `
-            <select class="form-control form-control-sm select2" data-id="${data.id}">
-              <option value=""></option>
-              <option ${data.status === 'accepted' ? 'selected' : ''} value="accepted">可決</option>
-              <option ${data.status === 'rejected' ? 'selected' : ''} value="rejected">否決</option>
-            </select>
-            `
-          }},
-          {data: "created_at", class:'text-center', render: function (obj, index, data) {
-            return moment(data.created_at).format('YYYY年MM月DD日 HH:mm')
-          }},
-          {data: "name_first" && "name_last", class:'text-center'},
-          // { data: function ( row, type, set ) {
-          //   if ( type === 'display' ) {
-          //       return row.name_last;
-          //   }
-          // }
-          {data: "ext_name_surname", class:'text-center', orderable: false},
-          {data: "gender", class:'text-center', orderable: false},
-          {data: "phone_number", class:'text-center', orderable: false},
-          {data: "_id", class: 'text-center', render: function (obj, index, data) {
-            return `
-            <a href="" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-default" onclick="showData('${data._id}')"><i class="fa fa-eye"></i></a>
-            <a target="_blank" href="print.php?id=${data._id}" class="btn btn-sm btn-success"><i class="fa fa-print"></i></a>
-            `
-          }},
+        },     
+          
         ],
-        "initComplete":function( settings, json){
-              $('.select2').select2({
-                minimumResultsForSearch: -1
-              }).on('change', function () {
-                
-                var el = $(this).parents('td').find('span.select2')
-                var option_selected = $(el).find('.select2-selection__rendered').html();
-                $.get('admin/change-status/'+$(this).attr('data-id')+'?status='+$(this).val(), 
-                function (response) {
-                  if (option_selected === '可決') {
-                    $(el).find('.select2-selection__rendered').css('color', 'red');
-                  } else if (option_selected === '否決') {
-                    $(el).find('.select2-selection__rendered').css('color', 'green');
-                  }  
-                })
-
-                  
-              })
-          }
+        
       });       
       
       $('.dataTables_filter').detach().appendTo('#search-moved')
