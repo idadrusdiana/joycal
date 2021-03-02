@@ -24,4 +24,9 @@ class AdminController extends Controller
     {
         return Response::where('id', $id)->update(['status' => $request->status]);
     }
+
+    public function print($id)
+    {
+        return Response::findOrFail($id);
+    }
 }

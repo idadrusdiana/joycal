@@ -27,7 +27,7 @@
                with font-awesome or any other icon font library -->       
           
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="/admin" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Responses
@@ -44,14 +44,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: block;">
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="pages/forms/general.html" class="nav-link">
                   <i class="nav-icon fas fa-store"></i>
                   <p>Stores</p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="/admin/account" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Account</p>
                 </a>

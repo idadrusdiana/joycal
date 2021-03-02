@@ -24,13 +24,16 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'index']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Route::grou(['middleware' => '']);
-Route::get('/admin', [AdminController::class, 'home']);
-Route::get('/admin/responses', [AdminController::class, 'responses']);
-Route::get('/admin/change-status/{id}', [AdminController::class, 'changeStatus']);
-
-Route::get('/account', [AccountController::class, 'index']);
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('/', [AdminController::class, 'home']);
+    Route::get('/responses', [AdminController::class, 'responses']);
+    Route::get('/change-status/{id}', [AdminController::class, 'changeStatus']);    
+    Route::get('/account', [AccountController::class, 'index']);
+    Route::post('/account/create',[AccountController::class, 'create']);
+});
 
 Route::get('/', [PublicController::class, 'home']);
 Route::post('/send-response', [PublicController::class, 'sendResponse']);
 
+Route::get('/admin/response/{id}', [AdminController::class, 'print']);
+Route::view('/admin/print', 'admin.print');

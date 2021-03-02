@@ -16,6 +16,7 @@ class CreateStoreTypesTable extends Migration
         Schema::create('store_types', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('store_type');
+            $table->string('store_type_en');
         });
     }
 

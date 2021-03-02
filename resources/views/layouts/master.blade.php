@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <base href="{{ url('admin')}}"/>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ジョイカル花園インター店｜新車の軽 月々1万円専門店<</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="assets_admin/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -21,10 +23,12 @@
   <link rel="stylesheet" href="assets_admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="assets_admin/dist/css/adminlte.min.css">
 
-
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
     .select2-results__options li:nth-child(2) {
       color: red !important;
     }
@@ -38,7 +42,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" style="overflow-x: hidden;">
     <!-- WRAPPER -->
 	<div class="wrapper">
 
@@ -56,7 +60,7 @@
 
     {{-- FOOTER --}}
     <footer class="main-footer">    
-        <strong>Copyright <a href="#">Joycal</a>
+        <strong>Copyright <a href="#">Joycal</a>        
     </footer>
 
       <!-- Control Sidebar -->
@@ -85,8 +89,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="assets_admin/dist/js/demo.js"></script>
 
-    @yield('footer');
-
+    @yield('footer')
 </body>
 </html>
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Response;
+use App\Models\User;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -16,14 +19,54 @@ class AccountController extends Controller
         return view('admin.account.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function create(Request $request)
     {
-        //
+        $this->validate($request,[
+            'first_name'=> 'required',
+            'last_name' =>'required',
+            'name'      => 'required',
+            'password'  => 'required',
+            'password_confirm' => 'required|same:password',
+            'store_id'  => 'required',
+            'email'     => 'required|email'
+        ]);
+
+        $user = new User;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->password = bcrypt($request->password);
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->role = 'store';
+        $user->store_id = $request->store_id;
+        $user->save();
+
+        return back();
+        // return redirect('/account');
+        // $this->validate($request,[
+        //     'first_name'=> 'required',
+        //     'last_name' => 'required',
+        //     'name'  => 'required',
+        //     'store_type'  => 'required',
+        //     'store_name' => 'required',
+        //     'email'     => 'required|email|unique:CC',
+        //     'agama'     => 'required',
+        //     'alamat' => 'required'
+            
+        // ]);     
+        // //insert ke table Response
+        // $response   =   new Response();        
+        // $response->first_name = $request->first_name;
+        // $response->last_name = $request->last_name;
+        // $response->name = $request->name;
+        // $response->password = bcrypt('rahasia');
+        
+        // $response->store_type = $request->store_type;
+        // $response->email    = $request->email;
+        // // $response->save();
+
+        // dd($request);
     }
 
     /**

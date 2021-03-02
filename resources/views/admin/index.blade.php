@@ -28,16 +28,16 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <div class="float-right" id="search-moved">
+                <div class="text-center" id="search-moved">
                   <!-- Date range -->
-                  <div class="form-group" id="range-selector">
+                  <div class="form-group form-inline float-right" id="range-selector">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <i class="far fa-calendar-alt"></i>
                         </span>
                       </div>
-                      <input onchange="filterData(this)" type="text" class="form-control float-right" id="reservation">
+                      <input style="width: 400px" onchange="filterData(this)" type="text" class="form-control float-right" id="reservation">
                     </div>
                     <!-- /.input group -->
                   </div>
@@ -82,14 +82,14 @@
       <div class="modal-content">
         <div class="modal-header bg-primary">
           <h6 class=""></h6>
-          <h4 class="text-right" >穐山　太郎</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h4 class="text-center" >穐山　太郎</h4>
+          <button type="button" class="close-white" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="float-right">
-          <button class="btn btn-primary mb-2"><i class="fa fa-print"></i></button>
+          <button class="btn btn-secondary mb-2"><i class="fa fa-print"></i></button>
           </div>
           <table class="table table-bordered table-sm">
             <tr>
@@ -197,8 +197,8 @@
       datatable = datatable.rows().data();    
       var item;
       for (var i = 0; i < datatable.length; i++) {
-        if (datatable[i]._id === data)
-          item = datatable[i];
+        if (datatable[i].id == data)
+        item = datatable[i];
       }
 
       $('#item-created_at').html(item.created_at),
@@ -246,7 +246,7 @@
         "processing": true,
         "serverSide": true,
         "oLanguage": {
-          "sSearch": "検索",
+          "sSearch": "",
           "sEmptyTable":     "データがありません。",
           "sInfo":           " _TOTAL_ 件中 _START_ から _END_ まで表示",
           "searchPlaceholder": "キーワードを入力",
@@ -257,6 +257,7 @@
           "sLengthMenu":     "_MENU_ 件表示",
           "sLoadingRecords": "読み込み中...",
           "sProcessing":     "処理中...",
+          "sSearch":         "",
           "sZeroRecords":    "一致するレコードがありません",
           "oPaginate": {
             "sFirst":    "先頭",
@@ -271,18 +272,10 @@
         },
         "ajax": {
           "url": 'http://localhost:8000/admin/responses',
-          "contentType": "application/json",
-          "data": function ( d ) {
-            var range = $('#reservation').val().replace(/[年月]+/g, '-');
-            range = range.replace(/[日]+/g, '');
-            return JSON.stringify( {
-              ...d , range
-            });
-          }
         },
         "order": [[1, 'asc']],
         "columns": [
-          {data: "_id", class: 'text-center', orderable: false, render: function () {
+          {data: "id", class: 'text-center', orderable: false, render: function () {
             return `<input type="checkbox"/>`;
           }},
           {data: "id", orderable: false, render: function (obj, index, data) {
@@ -297,7 +290,9 @@
           {data: "created_at", class:'text-center', render: function (obj, index, data) {
             return moment(data.created_at).format('YYYY年MM月DD日 HH:mm')
           }},
-          {data: "name_first" && "name_last", class:'text-center'},
+          {data: "name_first", class:'text-center', render: function (obj, index, data) {
+            return data.name_first
+          }},
           // { data: function ( row, type, set ) {
           //   if ( type === 'display' ) {
           //       return row.name_last;
@@ -306,35 +301,41 @@
           {data: "ext_name_surname", class:'text-center', orderable: false},
           {data: "gender", class:'text-center', orderable: false},
           {data: "phone_number", class:'text-center', orderable: false},
-          {data: "_id", class: 'text-center', render: function (obj, index, data) {
+          {data: "id", class: 'text-center', render: function (obj, index, data) {
             return `
-            <a href="" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-default" onclick="showData('${data._id}')"><i class="fa fa-eye"></i></a>
-            <a target="_blank" href="print.php?id=${data._id}" class="btn btn-sm btn-success"><i class="fa fa-print"></i></a>
+            <a href="" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-default" onclick="showData('${data.id}')"><i class="fa fa-eye"></i></a>
+            <a target="_blank" href="admin/print?id=${data.id}" class="btn btn-sm btn-success"><i class="fa fa-print"></i></a>
             `
           }},
         ],
         "initComplete":function( settings, json){
-              $('.select2').select2({
-                minimumResultsForSearch: -1
-              }).on('change', function () {
+
+        }
+      });
+      
+      // datatable.on('xhr.dt', function ( e, settings, json, xhr ) {
+      //   // Do some staff here...
+      //   $('.select2').select2({
+      //           minimumResultsForSearch: -1
+      //         }).on('change', function () {
                 
-                var el = $(this).parents('td').find('span.select2')
-                var option_selected = $(el).find('.select2-selection__rendered').html();
-                $.get('admin/change-status/'+$(this).attr('data-id')+'?status='+$(this).val(), 
-                function (response) {
-                  if (option_selected === '可決') {
-                    $(el).find('.select2-selection__rendered').css('color', 'red');
-                  } else if (option_selected === '否決') {
-                    $(el).find('.select2-selection__rendered').css('color', 'green');
-                  }  
-                })
+      //           var el = $(this).parents('td').find('span.select2')
+      //           var option_selected = $(el).find('.select2-selection__rendered').html();
+      //           $.get('admin/change-status/'+$(this).attr('data-id')+'?status='+$(this).val(), 
+      //           function (response) {
+      //             if (option_selected === '可決') {
+      //               $(el).find('.select2-selection__rendered').css('color', 'red');
+      //             } else if (option_selected === '否決') {
+      //               $(el).find('.select2-selection__rendered').css('color', 'green');
+      //             }  
+      //           })
 
                   
-              })
-          }
-      });       
+      //         })
+      // })
       
-      $('.dataTables_filter').detach().appendTo('#search-moved')
+      $('#example1_filter').find('input').attr('placeholder', '検索');
+      $('.dataTables_filter').detach().appendTo('#search-moved');
       $('#range-selector').detach().appendTo($('#example1_wrapper').find('.row').eq(0).find('.col-md-6').eq(1))
     });
 
