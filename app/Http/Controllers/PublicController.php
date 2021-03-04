@@ -16,4 +16,14 @@ class PublicController extends Controller
     {
         return DB::table('responses')->insert($request->all());
     }
+
+    public function flat7Index(Request $request)
+    {        
+        return view('public.flat7.index');
+    }
+
+    public function sendResponseFlat7(Request $request)
+    {
+        return DB::table('responses')->insert($request->all());
+    }
 }

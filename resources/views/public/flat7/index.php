@@ -19,11 +19,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="assets/img/joycal.png" class="pointer mt-10 mb-2" width="100%" style="max-width: 300px;">
+                        <img src="assets/flat7/flat7.png" class="pointer mt-10 mb-2" width="100%" style="max-width: 300px;">
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="tel:0120-589-360">
-                            <img src="assets/img/telp-joycal.png" class="pointer mt-10" style="max-width: 200px;">
+                        <a href="tel:0120-589-322">
+                            <img src="assets/flat7/telp-flat7.png" class="pointer mt-10" style="max-width: 200px;">
                         </a>
                     </div>
                 </div>
@@ -34,10 +34,10 @@
             <div class="container">
                 <div class="row" style="padding: 5px;">
                     <div class="col-6">
-                        <img src="assets/img/joycal.png" width="100%" style="margin: 3px 0px 1px 0px;" onclick="window.location.href='../../joycal_hanazono'">
+                        <img src="assets/flat7/flat7.png" width="100%" style="margin: 3px 0px 1px 0px;" onclick="window.location.href='../../joycal_hanazono'">
                     </div>
                     <div class="col-6 text-right">
-                        <img src="assets/img/telp-joycal.png" class="bar" @click="toggleContent(0)">
+                        <img src="assets/flat7/telp-flat7.png" class="bar" @click="toggleContent(0)">
                     </div> 
                 </div>
 
@@ -64,16 +64,16 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="assets/img/banner/car.png" alt="First slide">
+                                    <img class="d-block w-100" src="assets/flat7/banner/flat7.png" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/img/banner/car2.png" alt="Second slide">
+                                    <img class="d-block w-100" src="assets/flat7/banner/flat7_2.png" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/img/banner/car3.png" alt="Third slide">
+                                    <img class="d-block w-100" src="assets/flat7/banner/flat7_3.png" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/img/banner/car4.png" alt="Fourth slide">
+                                    <img class="d-block w-100" src="assets/flat7/banner/flat7_4.png" alt="Fourth slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -90,7 +90,7 @@
             </div>
             <!-- /carousel -->
 
-            <form class="container" id="form-input" method="post" action="<?= url('send-response') ?>" enctype="multipart/form-data">
+            <form class="container" id="form-input" method="post" action="<?= url('send-response-flat7') ?>" enctype="multipart/form-data">
                 <div class="row justify-content-center mt-3 r-mt-0 r-mb-1 mb-4">
                     <div class="col-md-9">
                         <div class="bg-white p-4 mb-3" style="border-radius: 20px; display: flex; justify-content: space-between; position: relative;">
@@ -139,10 +139,10 @@
                                 <div class="col-sm-8">
                                     <div class="row">
                                         <div class="col-6">
-                                            <input type="text" name="name_first" class="form-control rounded text-black" autocomplete="off" placeholder="姓" onkeypress="return event.charCode < 48 || event.charCode >57">
+                                            <input type="text" name="name_first" class="form-control text-black rounded" autocomplete="off" placeholder="姓" onkeypress="return event.charCode < 48 || event.charCode >57">
                                         </div>
                                         <div class="col-6">
-                                            <input type="text" name="name_last" class="form-control rounded text-black" autocomplete="off" placeholder="名" onkeypress="return event.charCode < 48 || event.charCode >57">
+                                            <input type="text" name="name_last" class="form-control text-black rounded" autocomplete="off" placeholder="名" onkeypress="return event.charCode < 48 || event.charCode >57">
                                         </div>
                                     </div>
                                 </div>
@@ -158,10 +158,10 @@
                                 <div class="col-sm-8">
                                     <div class="row">
                                         <div class="col-6">
-                                            <input type="text" name="ext_name_surname" class="form-control rounded text-black" autocomplete="off" placeholder="セイ" onkeypress="return event.charCode < 48 || event.charCode >57">
+                                            <input type="text" name="ext_name_surname" class="form-control text-black rounded" autocomplete="off" placeholder="セイ" onkeypress="return event.charCode < 48 || event.charCode  >57">
                                         </div>
                                         <div class="col-6">
-                                            <input type="text" name="ext_name_mei" class="form-control rounded text-black" autocomplete="off" placeholder="セイ" onkeypress="return event.charCode < 48 || event.charCode >57">
+                                            <input type="text" name="ext_name_mei" class="form-control text-black rounded" autocomplete="off" placeholder="セイ" onkeypress="return event.charCode < 48 || event.charCode  >57">
                                         </div>
                                     </div>
                                 </div>
@@ -212,8 +212,8 @@
                                     </div>
 
                                     <div class="col-sm-8" style="display: flex; flex-direction: row; align-items: center;">
-                                        <input type="text" class="form-control ml-3 text-black" style="width: 70px;" name="birth_year" onkeypress="return hanyaAngka(event)" maxlength="4"/>&nbsp;年 &nbsp;
-                                        <!-- <input type="number" class="form-control ml-3" style="width: 60px;" name="birth_month"/>&nbsp;月 -->
+                                        <input type="text" class="form-control text-black ml-3" style="width: 70px;" name="birth_year" onkeypress="return hanyaAngka(event)" maxlength="4"/>&nbsp;年 &nbsp;
+                                        <!-- <input type="number" class="form-control text-black ml-3" style="width: 60px;" name="birth_month"/>&nbsp;月 -->
                                         <select class="form-control text-black" style="width: 80px" name="birth_month">
                                             <option value="1">1月</option>
                                             <option value="2">2月</option>
@@ -228,7 +228,7 @@
                                             <option value="11">11月</option>
                                             <option value="12">12月</option>
                                         </select>&nbsp
-                                        <!-- <input type="number" class="form-control" style="width: 60px;" name="birth_date"/>&nbsp;日 -->
+                                        <!-- <input type="number" class="form-control text-black" style="width: 60px;" name="birth_date"/>&nbsp;日 -->
                                         <select class="form-control text-black" style="width: 80px" name="birth_date">
                                             <option value="1">1日</option>
                                             <option value="2">2日</option>
@@ -275,7 +275,7 @@
                                 </div>
 
                                 <div class="col-sm-8 form-inline-input">
-                                    <input type="text" class="form-control phone-input text-black" name="phone_number" placeholder="000-000-0000" style="width: 128px;"/>
+                                    <input type="text" class="form-control text-black phone-input" name="phone_number" placeholder="000-000-0000" style="width: 128px;" />
                                 </div><br>
                             </div>
 
@@ -287,7 +287,7 @@
                                 </div>
 
                                 <div class="col-sm-8">
-                                    <input type="text" class="form- text-black" placeholder="shinsha.kau@kei-ichiman.com" name="email" />
+                                    <input type="text" class="form-control text-black" placeholder="shinsha.kau@kei-ichiman.com" name="email" />
                                 </div>
                             </div>
 
@@ -300,7 +300,7 @@
 
                                 <div class="col-sm-8 form-inline-input">
                                     <div style="display: flex; align-items: center;">
-                                    〒&nbsp;<input type="text" class="form-control address-postcode text-black" style="width:100px" placeholder="000-0000" name="address_postcode" onkeypress="return hanyaAngka(event)" maxlength="8" />
+                                    〒&nbsp;<input type="text" class="form-control text-black address-postcode" style="width:100px" placeholder="000-0000" name="address_postcode" onkeypress="return hanyaAngka(event)" maxlength="7" />
                                     </div>
                                 </div>
                             </div>
@@ -367,7 +367,7 @@
                                 </div>
 
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control text-black" placeholder="※世帯主ご本人の場合は入力不要" name="household_name" />
+                                    <input type="text" class="form-control text-black" placeholder="※世帯主ご本人の場合は入力不要" name="household_name" onkeypress="return event.charCode < 48 || event.charCode  >57" />
                                 </div>
                             </div>
 
@@ -398,7 +398,7 @@
 
                                     <?php foreach ($options as $key => $option) : ?>
                                         <div class="form-check mr-4">
-                                            <input class="form-check-input" name="residence" type="radio" id="residence-<?= $key ?>" value="<?= $option ?>" <?= $key === 0 ? 'checked' : '' ?>>
+                                            <input class="form-check-input" name="residence" type="radio" id="residence-<?= $key ?>" value="<?= $option ?>">
                                             <label class="form-check-label" for="residence-<?= $key ?>">
                                                 <?= $option ?>
                                             </label>
@@ -427,7 +427,7 @@
                                 </div>
 
                                 <div class="col-sm-8 form-inline-input">
-                                    <select class="form-control mr-2 text-black" name="employment_status">
+                                    <select class="form-control text-black mr-2" name="employment_status">
                                         <option value="正社員">正社員</option>
                                         <option value="契約社員">契約社員</option>
                                         <option value="一般派遣社員">一般派遣社員</option>
@@ -474,7 +474,7 @@
                                 </div>
 
                                 <div class="col-sm-8 form-inline-input">
-                                    <input type="text" style="width:150px;" class="form-control phone-input text-black" name="work_phone" placeholder="000-000-0000" />
+                                    <input type="text" style="width:150px;" class="form-control text-black phone-input" name="work_phone" placeholder="000-000-0000" />
                                 </div>
                             </div>
 
@@ -529,7 +529,7 @@
 
                                     <?php foreach ($options as $key => $option) : ?>
                                         <div class="form-check mr-4">
-                                            <input class="form-check-input" name="industry" type="radio" id="industry-<?= $key ?>" value="<?= $option ?>" <?= $key === 0 ? 'checked' : '' ?>>
+                                            <input class="form-check-input" name="industry" type="radio" id="industry-<?= $key ?>" value="<?= $option ?>">
                                             <label class="form-check-label" for="industry-<?= $key ?>">
                                                 <?= $option ?>
                                             </label>
@@ -554,7 +554,7 @@
 
                                     <?php foreach ($options as $key => $option) : ?>
                                         <div class="form-check mr-4">
-                                            <input class="form-check-input" name="occupation" type="radio" id="occupation-<?= $key ?>" value="<?= $option ?>" <?= $key === 0 ? 'checked' : '' ?>>
+                                            <input class="form-check-input" name="occupation" type="radio" id="occupation-<?= $key ?>" value="<?= $option ?>">
                                             <label class="form-check-label" for="occupation-<?= $key ?>">
                                                 <?= $option ?>
                                             </label>
@@ -763,7 +763,7 @@
                             </table> -->
                             <div class="container">
                                 <div class="row justify-content-center r-mt-0 r-mb-1 mb-4">
-                                    <img src="assets/img/thanks/honjo.thanks.png" alt="honjo.thanks.png" width="100%;">
+                                    <img src="assets/flat7/thanks/honjo.thanks.png" alt="honjo.thanks.png" width="100%;">
                                 </div>
                             </div>
 
@@ -915,16 +915,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="assets/js/main.js"></script>
-    
+
     <script>
-        function hanyaAngka(event) {
+         function hanyaAngka(event) {
             var angka = (event.which) ? event.which : event.keyCode
             if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
                 return false;
             return true;
         }
     </script>
-
 </body>
 
 </html>

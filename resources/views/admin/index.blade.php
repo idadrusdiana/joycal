@@ -83,13 +83,13 @@
         <div class="modal-header bg-primary">
           <h6 class=""></h6>
           <h4 class="text-center" >穐山　太郎</h4>
-          <button type="button" class="close-white" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="float-right">
-          <button class="btn btn-secondary mb-2"><i class="fa fa-print"></i></button>
+            <button class="btn btn-secondary mb-2" target="_blank" href="admin/print?id=${data.id}"><i class="fa fa-print"></i></button>
           </div>
           <table class="table table-bordered table-sm">
             <tr>

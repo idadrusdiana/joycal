@@ -2,42 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
 
-class AuthController extends Controller
+class emailController extends Controller
 {
+    
+    public function index($user)
+    {
+        Mail::to("idadrusdiana01@gmail.com")->send(new TestMail($user));
+
+        return "Email telah dikirim";
+    }
+
+    public function create()
+    {
+        //
+    }
+
     /**
-     * Display a listing of the resource.
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function store(Request $request)
     {
-        return view('auth.login');
-    }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|min:4|max:255',
-            'password' => 'required|min:6|max:64'
-        ]);
-
-        $identifier = preg_match("/^.*@.*\..*$/", $request->email) ? 'email' : 'name';
-
-        if (Auth::attempt([$identifier => $request->email, 'password' => $request->password], $request->remember))
-            return redirect('/admin');
-
-        return back()->withErrors(['failed' => 'Login gagal']);
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
+        //
     }
 
     /**

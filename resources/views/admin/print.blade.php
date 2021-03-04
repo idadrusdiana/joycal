@@ -16,13 +16,13 @@
 <body>
   <header>
     <div id="company">
-      <h2 class="name text-center mt-5">顧客リスト</h2>      
+      <h2 class="name text-center mt-5">顧客リスト</h2> <br>      
     </div>
     </div>
   </header>
 
 <div class="container" style="width: 60%">
-    <table class="table" border="1" cellspacing="0" cellpadding="17">
+    <table class="table mt-5" border="0" cellspacing="0" cellpadding="19">
       <tr>
         <td>申込日</td>              
         <td><span id="item-name"></span></td>
@@ -104,12 +104,14 @@
         <td><span id="item-occupation"></span></td>
       </tr>
     </table>
+
+    <footer>
+      
+        <h4 class="name text-center mt-5">Copyright <a href="#">Joycal</a> </h4 >
+      
+    </footer>
 </div>
 
-<footer>
-  <div class="row col-sm-12 mt-5 ml-5 text-center"></div>
-  <strong>Copyright <a href="#">Joycal</a> 
-</footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script>

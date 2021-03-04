@@ -17,7 +17,8 @@ var controller = new Vue({
                     required: 'この項目は必須です。',
                     remote: 'bla bla bla'
                 });                
-                $('.phone-input').mask('000-000-0000'); 
+                $('.phone-input').mask('000-000-0000');
+                $('.address-postcode').mask('000-0000'); 
                 $('.show-pdf').on('click', function (e) {
                     e.preventDefault();
                     $($(this).attr('data-src')).toggle()

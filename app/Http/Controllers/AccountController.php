@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestMail;
 use App\Models\Response;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AccountController extends Controller
 {
@@ -41,6 +43,10 @@ class AccountController extends Controller
         $user->role = 'store';
         $user->store_id = $request->store_id;
         $user->save();
+
+        $user->password = $request->password;
+
+        Mail::to($user->email)->send(new TestMail($user));
 
         return back();
         // return redirect('/account');
