@@ -25,10 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    Mail::to('idadrusdiana01@gmail.com')
-    ->send(new TestMail());
-});
 
 Route::get('/sendemail', [emailController::class, 'index']);
 Route::get('/joycal_hanazono', [PublicController::class, 'home']);

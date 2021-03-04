@@ -89,7 +89,7 @@
         </div>
         <div class="modal-body">
           <div class="float-right">
-            <button class="btn btn-secondary mb-2" target="_blank" href="admin/print?id=${data.id}"><i class="fa fa-print"></i></button>
+            <a id="print-button" class="btn btn-secondary mb-2" target="_blank" href="admin/print?id=${data.id}"><i class="fa fa-print"></i></a>
           </div>
           <table class="table table-bordered table-sm">
             <tr>
@@ -201,6 +201,8 @@
         item = datatable[i];
       }
 
+      $('#print-button').attr('href', 'admin/print?id='+item.id);
+
       $('#item-created_at').html(item.created_at),
       $('#item-gender').html(item.gender),
       $('#item-phone_number').html(item.phone_number),
@@ -228,6 +230,7 @@
     return result;
   }
   $(function () {
+
     $('#reservation').daterangepicker({
       locale: {
         format: 'YYYY年MM月DD日',
@@ -272,6 +275,13 @@
         },
         "ajax": {
           "url": 'http://localhost:8000/admin/responses',
+          "data": function ( d ) {
+            var range = $('#reservation').val().replace(/[年月]+/g, '-');
+            range = range.replace(/[日]+/g, '');
+            return {
+              ...d , range
+            }
+          }
         },
         "order": [[1, 'asc']],
         "columns": [

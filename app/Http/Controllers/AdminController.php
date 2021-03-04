@@ -15,7 +15,10 @@ class AdminController extends Controller
 
     public function responses()
     {
-        $query = Response::query();
+        $range = request()->range;
+        $range = explode(' - ', $range);        
+
+        $query = Response::whereBetween('created_at', [$range[0], $range[1]]);
 
         return datatables()->of($query)->toJson();
     }

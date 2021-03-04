@@ -22,7 +22,7 @@
                             <div class="col-sm-8">
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="text" name="first_name" class="form-control rounded" autocomplete="off" placeholder="姓" value="{{ old('first_name') }}">
+                                        <input type="text" name="first_name" class="form-control rounded" autocomplete="off" placeholder="姓" value="{{ old('first_name') }}" onkeypress="return event.charCode < 48 || event.charCode >57">
                                         @if ($errors->has('first_name'))
                                             @foreach ($errors->get('first_name') as $error)
                                                 <span class="text-danger">{{ $error }}</span>
@@ -30,7 +30,7 @@
                                         @endif
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" name="last_name" class="form-control rounded" autocomplete="off" placeholder="名" value="{{ old('last_name') }}">
+                                        <input type="text" name="last_name" class="form-control rounded" autocomplete="off" placeholder="名" value="{{ old('last_name') }}" onkeypress="return event.charCode < 48 || event.charCode >57">
                                         @if ($errors->has('last_name'))
                                             @foreach ($errors->get('last_name') as $error)
                                                 <span class="text-danger">{{ $error }}</span>  
@@ -51,11 +51,11 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <input type="text" name="name" class="form-control rounded" autocomplete="off" placeholder="username" value="{{ old('name') }}">
-                                        @if ($errors->has('last_name'))
+                                        @if ($errors->has('name'))
                                             @foreach ($errors->get('name') as $error)
                                                 <span class="text-danger">{{ $error }}</span>  
                                             @endforeach                                            
-                                        @endif
+                                        @endif                                       
                                     </div>                                    
                                 </div>
                             </div>
@@ -69,7 +69,10 @@
                             <div class="col-sm-8">
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="password" name="password" class="form-control rounded" autocomplete="off" placeholder="Password" value="{{ old('password') }}">
+                                        <input id="password" type="password" name="password" class="form-control rounded" autocomplete="off" placeholder="Password" value="{{ old('password') }}">
+                                        <button id="btn-eye" type="button" style="position: absolute; right: 15px; top: 6px; background:white; border:white" onclick="myFunction()">
+                                            <i id="eye" class="eye fas fa-eye"></i>                 
+                                        </button> 
                                         @if ($errors->has('password'))
                                             @foreach ($errors->get('password') as $error)
                                                 <span class="text-danger">{{ $error }}</span>  
@@ -77,7 +80,11 @@
                                         @endif
                                     </div>
                                     <div class="col-6">
-                                        <input type="password" name="password_confirm" class="form-control rounded" autocomplete="off" placeholder="Confirm Password">
+                                        <input id="password_confirm" type="password" name="password_confirm" class="form-control rounded" autocomplete="off" placeholder="Confirm Password">
+                                        <button id="btn-eye-slash" type="button" style="position: absolute; right: 15px; top: 6px; background:white; border:white" onclick="myFunction2()">
+                                            <i id="eyes" class="eye fas fa-eye"></i>                 
+                                        </button> 
+                                        
                                         @if ($errors->has('password_confirm'))
                                             @foreach ($errors->get('password_confirm') as $error)
                                                 <span class="text-danger">{{ $error }}</span>  
@@ -189,5 +196,22 @@
     
     });
 
+  </script>
+
+  <script>
+      //menggunakan bahasa J-Query
+      function myFunction(){
+        $('#password').attr('type', $('#password').attr('type') === 'password' ? 'text' : 'password') 
+        var attr = $('#password').attr('type');
+
+        if (attr == 'password') {
+            $('.eye').removeClass('fa-eye');
+            $('.eye').addClass('fa-eye-slash');
+        } else {
+            $('.eye').addClass('fa-eye');
+            $('.eye').removeClass('fa-eye-slash');
+        }
+    }
+        
   </script>
 @stop

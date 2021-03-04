@@ -27,7 +27,7 @@ class AccountController extends Controller
         $this->validate($request,[
             'first_name'=> 'required',
             'last_name' =>'required',
-            'name'      => 'required',
+            'name'      => 'required|alpha_num',
             'password'  => 'required',
             'password_confirm' => 'required|same:password',
             'store_id'  => 'required',
@@ -45,6 +45,7 @@ class AccountController extends Controller
         $user->save();
 
         $user->password = $request->password;
+        // $user->store_name = $request->store_name;
 
         Mail::to($user->email)->send(new TestMail($user));
 
