@@ -29,7 +29,7 @@ class AccountController extends Controller
             'last_name' =>'required',
             'name'      => 'required|alpha_num',
             'password'  => 'required',
-            'password_confirm' => 'required|same:password',
+            'password_confirm' => 'same:password',
             'store_id'  => 'required',
             'email'     => 'required|email'
         ]);

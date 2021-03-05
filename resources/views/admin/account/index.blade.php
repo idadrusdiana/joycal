@@ -1,12 +1,6 @@
 @extends('layouts.master')
 
-@section('content') 
-    <!-- Main content -->
-    <div class="content-wrapper">
-      <div class="main-content">
-        <div class="row">
-            {{-- menampilkan error validasi --}}
-            
+@section('content')          
 
           <form class="container" id="form-input" method="post" action="/admin/account/create" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -80,13 +74,9 @@
                                         @endif
                                     </div>
                                     <div class="col-6">
-                                        <input id="password_confirm" type="password" name="password_confirm" class="form-control rounded" autocomplete="off" placeholder="Confirm Password">
-                                        <button id="btn-eye-slash" type="button" style="position: absolute; right: 15px; top: 6px; background:white; border:white" onclick="myFunction2()">
-                                            <i id="eyes" class="eye fas fa-eye"></i>                 
-                                        </button> 
-                                        
+                                        <input id="password_confirm" type="password" name="password_confirm" class="form-control rounded" autocomplete="off" placeholder="Confirm Password">                                       
                                         @if ($errors->has('password_confirm'))
-                                            @foreach ($errors->get('password_confirm') as $error)
+                                            @foreach ($errors->get('password') as $error)
                                                 <span class="text-danger">{{ $error }}</span>  
                                             @endforeach                                            
                                         @endif
@@ -127,6 +117,7 @@
                                         <option store-type="{{ $store->store_type_id }}" value="{{ $store->id }}">{{ $store->store_name }}</option>
                                         @endforeach                       
                                     </select>
+                                    <div id="radios"></div>
                                 </div>
                               </div>
                             </div>
@@ -150,28 +141,17 @@
                         </div>                        
 
                         <div class="form-group text-right">
-                          <button type="submit" class="bg-blue shadow text-white " style="border-radius: 5px; width: 100px;">Save</button>                            
+                          <button type="submit" class="btn btn-primary btn-sm">Save</button>                            
                         </div>
                     </div>
 
                 </div>
             </div>
           </form>          
-          <!-- /.col -->
-        </div>
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.content -->
   
-  <!-- /.content-wrapper -->
-  <!-- modal content -->
-
-</div>
-<!-- ./wrapper -->
 @stop
 
-@section('footer')
+@push('script')
   <script>
   var stores = [];
 
@@ -181,10 +161,16 @@
     var html = '';
 
     for (i = 0; i < filtered.length; i++) {
-      html += `<option value="${filtered[i].id}">${filtered[i].label}</option>`;
+      html += `
+            <div class="form-group">
+            <input name="store_id" id="check_${filtered[i].id}" type="radio" value="${filtered[i].id}"/>
+            <label for="check_${filtered[i].id}">${filtered[i].label}</label>  
+            </div>
+      `
     }
 
-    $("select[name=store_id]").html(html);
+    $("#radios").html(html);
+    $("select[name=store_id]").remove();
   }
   $(function () {
           
@@ -211,7 +197,6 @@
             $('.eye').addClass('fa-eye');
             $('.eye').removeClass('fa-eye-slash');
         }
-    }
-        
+    }        
   </script>
-@stop
+@endpush

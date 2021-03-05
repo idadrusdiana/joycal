@@ -1,74 +1,88 @@
-@push('css')
-<!-- DataTables -->
-<link rel="stylesheet" href="assets_admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="assets_admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<!-- Theme style -->
-<!-- daterange picker -->
-<link rel="stylesheet" href="assets_admin/plugins/daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="assets_admin/plugins/select2/css/select2.min.css">
-<link rel="stylesheet" href="assets_admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-@endpush
+@extends('store_layouts.master')
 
-@section('header', 'Test')
-@extends('layouts.master')
-@section('content') 
-<!-- Main content -->
-@component('components.modal')
-@endcomponent
-<div class="card">
-  <div class="card-header">
-    <div class="text-center" id="search-moved">
-      <!-- Date range -->
-      <div class="form-group form-inline float-right" id="range-selector">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="far fa-calendar-alt"></i>
-            </span>
-          </div>
-          <input style="width: 400px" onchange="filterData(this)" type="text" class="form-control float-right" id="reservation">
-        </div>
-        <!-- /.input group -->
+<!-- <!-- <body class="hold-transition sidebar-mini"> -->
+  <!-- Content Wrapper. Contains page content -->
+  <!-- <div class="content-wrapper"> -->
+    <!-- Content Header (Page header) -->
+    
+
+    <!-- <div class="form-group" style="width: 180px; padding: 15px;" >      
+    
+      <div class="form-group form-inline" style="width: 180px; margin-top: 10px;" >      
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>        
+        </select>
+        <label>&nbsp; 件表示</label>
       </div>
-      <!-- /.form group -->
+    </div> -->
+@section('content') 
+    <!-- Main content -->
+    <div class="content-wrapper">
+      <div class="main-content">
+        <div class="row">
+          <div class="col-sm-12 col-md-12" style="margin: 20px 0; text-align:center" >
+            <h2>顧客リスト</h2> &nbsp;         
+          </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="text-center" id="search-moved">
+                  <!-- Date range -->
+                  <div class="form-group form-inline float-right" id="range-selector">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                      <input style="width: 400px" onchange="filterData(this)" type="text" class="form-control float-right" id="reservation">
+                    </div>
+                    <!-- /.input group -->
+                  </div>
+                  <!-- /.form group -->
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped table-sm">
+                  <thead>
+                  <tr>
+                    <th width="40px">対応</th>
+                    <th width="70px">可否</th>
+                    <th>申込日</th>
+                    <th width="180px">名前</th>
+                    <th width="180px">フリガナ</th>
+                    <th width="40px">性別</th>
+                    <th width="120px">電話番号</th>
+                    <th width="70px">処理</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                                    
+                  </tbody>                
+                </table>
+              </div>        
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.row -->
     </div>
-  </div>
-  <!-- /.card-header -->
-  <div class="card-body">
-    <table id="example1" class="table table-bordered table-striped table-sm">
-      <thead>
-      <tr>
-        <th width="40px">対応</th>
-        <th>可否</th>
-        <th>申込日</th>
-        <th>名前</th>
-        <th>フリガナ</th>
-        <th>性別</th>
-        <th>電話番号</th>
-        <th width="100px">処理</th>
-      </tr>
-      </thead>
-      <tbody>
-                        
-      </tbody>                
-    </table>
-  </div>        
-  <!-- /.card-body -->
-</div>
+    <!-- /.content -->
+  
+  <!-- /.content-wrapper -->
 
-<!-- /.card -->
+</div>
+<!-- ./wrapper -->
 @stop
 
-@push('script')
-<script src="assets_admin/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="assets_admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets_admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="assets_admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="assets_admin/plugins/moment/moment.min.js"></script>
-<script src="assets_admin/plugins/daterangepicker/daterangepicker.js"></script>
-<script src="assets_admin/plugins/select2/js/select2.full.min.js"></script>
-<script src="assets/js/mixins.jp.js"></script>
-<script type="text/javascript">
+@section('footer')
+  <script>
   var datatable;
   var params;
   function filterData(that) {
@@ -160,14 +174,12 @@
           "data": function ( d ) {
             var range = $('#reservation').val().replace(/[年月]+/g, '-');
             range = range.replace(/[日]+/g, '');
-            const urlParams = new URLSearchParams(window.location.search);
-            const cluster = urlParams.get('cluster');
             return {
-              ...d , range, cluster
+              ...d , range
             }
           }
         },
-        "order": [[2, 'desc']],
+        "order": [[1, 'asc']],
         "columns": [
           {data: "id", class: 'text-center', orderable: false, render: function () {
             return `<input type="checkbox"/>`;
@@ -203,26 +215,30 @@
           }},
         ],
         "initComplete":function( settings, json){
-          $('.select2').on('change', function () {
-                
-                var el = $(this).parents('td').find('span.select2')
-                var option_selected = $(el).find('.select2-selection__rendered').html();
-                $.get('admin/change-status/'+$(this).attr('data-id')+'?status='+$(this).val(), 
-                function (response) {
-                  if (option_selected === '可決') {
-                    $(el).find('.select2-selection__rendered').css('color', 'red');
-                  } else if (option_selected === '否決') {
-                    $(el).find('.select2-selection__rendered').css('color', 'green');
-                  }  
-                })                  
-              })
+
         }
       });
       
-      datatable.on('xhr.dt', function ( e, settings, json, xhr ) {
-        // Do some staff here...
-        
-      })
+      // datatable.on('xhr.dt', function ( e, settings, json, xhr ) {
+      //   // Do some staff here...
+      //   $('.select2').select2({
+      //           minimumResultsForSearch: -1
+      //         }).on('change', function () {
+                
+      //           var el = $(this).parents('td').find('span.select2')
+      //           var option_selected = $(el).find('.select2-selection__rendered').html();
+      //           $.get('admin/change-status/'+$(this).attr('data-id')+'?status='+$(this).val(), 
+      //           function (response) {
+      //             if (option_selected === '可決') {
+      //               $(el).find('.select2-selection__rendered').css('color', 'red');
+      //             } else if (option_selected === '否決') {
+      //               $(el).find('.select2-selection__rendered').css('color', 'green');
+      //             }  
+      //           })
+
+                  
+      //         })
+      // })
       
       $('#example1_filter').find('input').attr('placeholder', '検索');
       $('.dataTables_filter').detach().appendTo('#search-moved');
@@ -230,4 +246,4 @@
     });
 
   </script>
-@endpush
+@stop

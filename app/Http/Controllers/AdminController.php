@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function home()
     {
         return view('admin.index');
@@ -18,7 +23,14 @@ class AdminController extends Controller
         $range = request()->range;
         $range = explode(' - ', $range);        
 
-        $query = Response::whereBetween('created_at', [$range[0], $range[1]]);
+        $query = Response::whereBetween('created_at', [$range[0], $range[1]])
+        
+        ->when(auth()->user()->role === 'store', function ($query) {
+            return $query->where('store_id', auth()->user()->store_id);
+        })
+        ->when(request()->cluster, function ($query) {
+            return $query->where('store_id', request()->cluster);
+        });
 
         return datatables()->of($query)->toJson();
     }

@@ -12,11 +12,14 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto" style="margin-right: 20px; width:200px">
     <!-- <label>顧客リスト</label>       -->
-    <select class="form-control" id="exampleFormControlSelect1" >
-      <option>全店舗</option>
-      <option>全店舗</option>
-      <option>全店舗</option>        
+    @if (auth()->user()->role === 'superadmin')
+    <select class="form-control" onchange="window.location.href = '{{ url('/admin') }}?cluster=' + event.target.value">
+      <option value="">Honsha</option>
+      @foreach (App\Models\Store::all() as $store)
+      <option {!! request()->cluster == $store->id ? 'selected' : '' !!} value="{{ $store->id }}">{{ $store->store_name }}</option>        
+      @endforeach
     </select> 
+    @endif
   </ul>      
 </nav>
   <!-- /.navbar -->

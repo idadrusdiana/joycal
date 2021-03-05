@@ -3,6 +3,7 @@
 </style>
 
 <head>
+    <base href="<?= url('/') ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ジョイカル花園インター店｜新車の軽 月々1万円専門店</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -91,6 +92,7 @@
             <!-- /carousel -->
 
             <form class="container" id="form-input" method="post" action="<?= url('send-response') ?>" enctype="multipart/form-data">
+                <input type="hidden" name="store_id" value="<?= $store->id ?>"/>
                 <div class="row justify-content-center mt-3 r-mt-0 r-mb-1 mb-4">
                     <div class="col-md-9">
                         <div class="bg-white p-4 mb-3" style="border-radius: 20px; display: flex; justify-content: space-between; position: relative;">
@@ -473,8 +475,10 @@
                                     <label class="br-5 btn-xxs bg-red text-white ml-10">必須</label>
                                 </div>
 
-                                <div class="col-sm-8 form-inline-input">
-                                    <input type="text" style="width:150px;" class="form-control phone-input text-black" name="work_phone" placeholder="000-000-0000" />
+                                <div class="col-sm-8" style="display:flex; flex-direction:row; align-items:center">
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">-
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">-
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">
                                 </div>
                             </div>
 

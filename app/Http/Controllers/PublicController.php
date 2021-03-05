@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StoreType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PublicController extends Controller
 {
-    public function home(Request $request)
+    public function home(Request $request, $store)
     {        
-        return view('public.index');
+        $store = StoreType::where('store_type_en', $store)->firstOrFail();
+        return view('public.form', compact('store'));
     }
 
     public function sendResponse(Request $request)

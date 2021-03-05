@@ -34,8 +34,8 @@
               </p>
             </a>
           </li>
-          
-          <li class="nav-item has-treeview menu-open">
+          @if (auth()->user()->role === 'superadmin')
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder"></i>
               <p>
@@ -43,13 +43,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview" style="display: block;">
-              {{-- <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
-                  <i class="nav-icon fas fa-store"></i>
-                  <p>Stores</p>
-                </a>
-              </li> --}}
+            <ul class="nav nav-treeview" style="display: block;">              
               <li class="nav-item">
                 <a href="/admin/account" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
@@ -58,6 +52,7 @@
               </li>              
             </ul>
           </li>
+          @endif
 
           <a href="/logout" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>

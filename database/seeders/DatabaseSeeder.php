@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Response;
 use App\Models\Store;
 use App\Models\StoreType;
 use App\Models\User;
@@ -27,14 +28,13 @@ class DatabaseSeeder extends Seeder
         // $user->save();
         
         // StoreType::insert([
-        //     ['store_type' => 'Ashikaga', 'store_type_en' => 'ashikaga'],
+        //     ['store_type' => 'Joycal', 'store_type_en' => 'joycal'],
         //     ['store_type' => 'FLat 7', 'store_type_en' => 'flat-7'],
-        //     ['store_type' => 'Joycal', 'store_type_en' => 'joycal']
+        //     ['store_type' => 'Ashikaga', 'store_type_en' => 'ashikaga']
         // ]);
 
-        foreach (range(1, 40) as $store) {
-            Store::create(['store_name' => 'Store '.$store, 'store_type_id' => rand(1, 3)]);
+        foreach (Response::all() as $response) {
+            Response::where('id', $response->id)->update(['store_id' => rand(2, 9)]);
         }
-
     }
 }

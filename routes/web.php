@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\emailController;
 use App\Http\Controllers\flat7Controller;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\StoreController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -26,26 +27,36 @@ Route::get('/', function () {
 });
 
 
-Route::get('/sendemail', [emailController::class, 'index']);
-Route::get('/joycal_hanazono', [PublicController::class, 'home']);
-Route::post('/send-response', [PublicController::class, 'sendResponse']);
+// Route::get('/sendemail', [emailController::class, 'index']);
+// Route::get('/joycal_hanazono', [PublicController::class, 'home']);
+// Route::post('/send-response', [PublicController::class, 'sendResponse']);
 
-Route::get('/flat7_ashikaga', [PublicController::class, 'flat7Index']);
-Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
+// Route::get('/flat7_ashikaga', [PublicController::class, 'flat7Index']);
+// Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
 
-Route::get('/flat7_ashikaga', [PublicController::class, 'flat7Index']);
-Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
+// Route::get('/flat7_ashikaga', [PublicController::class, 'flat7Index']);
+// Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
 
-Route::get('/login', [AuthController::class, 'index']);
+Route::get('/apply/{store}', [PublicController::class, 'home']);
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::group(['prefix' => 'admin'], function (){
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'home']);
     Route::get('/responses', [AdminController::class, 'responses']);
     Route::get('/change-status/{id}', [AdminController::class, 'changeStatus']);    
-    Route::get('/account', [AccountController::class, 'index']);
-    Route::post('/account/create',[AccountController::class, 'create']);
+    
+    Route::group(['middleware' => 'superadmin'], function () {
+        Route::get('/account', [AccountController::class, 'index']);
+        Route::post('/account/create',[AccountController::class, 'create']);
+    });
 });
+
+// Route::group(['middleware'=>['auth']], function(){
+    Route::get('/store', [StoreController::class, 'home']);
+
 
 
 Route::get('/admin/response/{id}', [AdminController::class, 'print']);
