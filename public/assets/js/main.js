@@ -17,7 +17,7 @@ var controller = new Vue({
                     required: 'この項目は必須です。',
                     remote: 'bla bla bla'
                 });                
-                $('.phone-input').mask('000-000-0000');
+                $('.phone-input').mask('0000');
                 $('.address-postcode').mask('000-0000'); 
                 $('.show-pdf').on('click', function (e) {
                     e.preventDefault();
@@ -41,8 +41,8 @@ var controller = new Vue({
                         employment_status: "required",
                         ext_name_mei:  "required",
                         ext_name_surname:  "required",
-                        family_structure:  "required",
                         gender: "required",
+                        family_structure:  "required",
                         industry: "required",
                         length_of_service:  "required",
                         marital_status: "required",
@@ -77,6 +77,9 @@ var controller = new Vue({
                         details_of_application: {
                             required: ""
                         },
+                        gender:{
+                            required: ""
+                        },
                         birth_date: {
                             required: ""
                         },
@@ -88,11 +91,32 @@ var controller = new Vue({
                         },
                         birth_year: {
                             required: ""
-                        }
+                        },
+                        work_phone: {
+                            required: ""
+                        },
+                        phone_number: {
+                            required: ""
+                        },
+                        marital_status: {
+                            required: ""
+                        },
+                        address_postcode: {
+                            required: ""
+                        },
+                        residence: {
+                            required: ""
+                        },
+                        industry: {
+                            required: ""
+                        },
+                        occupation: {
+                            required: ""
+                        },
+
                     },
                     submitHandler: function(form) {
-                        var data = new FormData(form);
-
+                        var data = new FormData(form);                       
                         Vue.nextTick(function () {
                             $('.line-progress').css('width', '50%');
                         });
@@ -117,7 +141,7 @@ var controller = new Vue({
                     $('.line-progress').css('width', '100%');
                 });
 
-                window.history.pushState('page2', 'Title', window.location.href + 'thanks');
+                window.history.pushState('page2', 'Title', window.location.href + '/thanks');
             });
         },
         goHome() {

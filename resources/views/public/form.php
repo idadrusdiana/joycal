@@ -214,9 +214,9 @@
                                     </div>
 
                                     <div class="col-sm-8" style="display: flex; flex-direction: row; align-items: center;">
-                                        <input type="text" class="form-control ml-3 text-black" style="width: 70px;" name="birth_year" onkeypress="return hanyaAngka(event)" maxlength="4"/>&nbsp;年 &nbsp;
+                                        <input type="text" class="form-control ml-3 text-black" style="width: 65px;" name="birth_year" onkeypress="return hanyaAngka(event)" maxlength="4"/>&nbsp;年 &nbsp;
                                         <!-- <input type="number" class="form-control ml-3" style="width: 60px;" name="birth_month"/>&nbsp;月 -->
-                                        <select class="form-control text-black" style="width: 80px" name="birth_month">
+                                        <select class="form-control text-black" style="width: 83px" name="birth_month">
                                             <option value="1">1月</option>
                                             <option value="2">2月</option>
                                             <option value="3">3月</option>
@@ -231,7 +231,7 @@
                                             <option value="12">12月</option>
                                         </select>&nbsp
                                         <!-- <input type="number" class="form-control" style="width: 60px;" name="birth_date"/>&nbsp;日 -->
-                                        <select class="form-control text-black" style="width: 80px" name="birth_date">
+                                        <select class="form-control text-black" style="width: 84px" name="birth_date">
                                             <option value="1">1日</option>
                                             <option value="2">2日</option>
                                             <option value="3">3日</option>
@@ -258,7 +258,7 @@
                                             <option value="24">24日</option>
                                             <option value="25">25日</option>
                                             <option value="26">26日</option>
-                                            <option value="27">26日</option>
+                                            <option value="27">27日</option>
                                             <option value="28">28日</option>
                                             <option value="29">29日</option>
                                             <option value="30">30日</option>
@@ -276,8 +276,10 @@
                                     <label class="br-5 btn-xxs bg-red text-white ml-10">必須</label>
                                 </div>
 
-                                <div class="col-sm-8 form-inline-input">
-                                    <input type="text" class="form-control phone-input text-black" name="phone_number" placeholder="000-000-0000" style="width: 128px;"/>
+                                <div class="col-sm-8" style="display:flex; flex-direction:row; align-items:center">                                  
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="phone_number" placeholder="0000" maxlength="4">&nbsp;-&nbsp;
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="phone_number2" placeholder="0000" maxlength="4">&nbsp;-&nbsp;
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="phone_number3" placeholder="0000" maxlength="4">
                                 </div><br>
                             </div>
 
@@ -289,7 +291,7 @@
                                 </div>
 
                                 <div class="col-sm-8">
-                                    <input type="text" class="form- text-black" placeholder="shinsha.kau@kei-ichiman.com" name="email" />
+                                    <input type="text" class="form-control text-black" placeholder="shinsha.kau@kei-ichiman.com" name="email" />
                                 </div>
                             </div>
 
@@ -397,10 +399,10 @@
                                         '自己所有', '家族所有', '社宅・官舎', '公営住宅', '分譲マンション', '賃貸マンション', '借家', 'アパート', '寮', 'その他'
                                     ];
                                     ?>
-
+                                    
                                     <?php foreach ($options as $key => $option) : ?>
-                                        <div class="form-check mr-4">
-                                            <input class="form-check-input" name="residence" type="radio" id="residence-<?= $key ?>" value="<?= $option ?>" <?= $key === 0 ? 'checked' : '' ?>>
+                                        <div class="form-check mr-4">                                                
+                                            <input class="form-check-input" name="residence" type="radio" id="residence-<?= $key ?>" value="<?= $option ?>" > 
                                             <label class="form-check-label" for="residence-<?= $key ?>">
                                                 <?= $option ?>
                                             </label>
@@ -476,9 +478,9 @@
                                 </div>
 
                                 <div class="col-sm-8" style="display:flex; flex-direction:row; align-items:center">
-                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">-
-                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">-
-                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone" placeholder="0000" maxlength="4">&nbsp;-&nbsp;
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone2" placeholder="0000" maxlength="4">&nbsp;-&nbsp;
+                                    <input type="text" style="width:100px; text-align: center;" class="form-control phone-input text-black" name="work_phone3" placeholder="0000" maxlength="4">
                                 </div>
                             </div>
 
@@ -533,7 +535,7 @@
 
                                     <?php foreach ($options as $key => $option) : ?>
                                         <div class="form-check mr-4">
-                                            <input class="form-check-input" name="industry" type="radio" id="industry-<?= $key ?>" value="<?= $option ?>" <?= $key === 0 ? 'checked' : '' ?>>
+                                            <input class="form-check-input" name="industry" type="radio" id="industry-<?= $key ?>" value="<?= $option ?>">
                                             <label class="form-check-label" for="industry-<?= $key ?>">
                                                 <?= $option ?>
                                             </label>
@@ -558,7 +560,7 @@
 
                                     <?php foreach ($options as $key => $option) : ?>
                                         <div class="form-check mr-4">
-                                            <input class="form-check-input" name="occupation" type="radio" id="occupation-<?= $key ?>" value="<?= $option ?>" <?= $key === 0 ? 'checked' : '' ?>>
+                                            <input class="form-check-input" name="occupation" type="radio" id="occupation-<?= $key ?>" value="<?= $option ?>">
                                             <label class="form-check-label" for="occupation-<?= $key ?>">
                                                 <?= $option ?>
                                             </label>
@@ -681,7 +683,7 @@
                                 </tr>
                                 <tr>
                                     <td>電話番号</td>
-                                    <td>{{ result.phone_number }}</td>
+                                    <td>{{ result.phone_number + '-' + result.phone_number2 + '-' + result.phone_number3 }}</td>
                                 </tr>
                                 <tr>
                                     <td>メールアドレス</td>
@@ -729,7 +731,7 @@
                                 </tr>
                                 <tr>
                                     <td>電話番号</td>
-                                    <td>{{ result.work_phone }}</td>
+                                    <td>{{ result.work_phone + '-' + result.work_phone2 + '-' + result.phone_number3  }}</td>
                                 </tr>
                                 <tr>
                                     <td>勤続年数</td>

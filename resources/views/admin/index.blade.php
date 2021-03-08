@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="assets_admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 @endpush
 
-@section('header', 'Test')
+@section('header', '顧客リスト')
 @extends('layouts.master')
 @section('content') 
 <!-- Main content -->
@@ -67,7 +67,7 @@
 <script src="assets_admin/plugins/moment/moment.min.js"></script>
 <script src="assets_admin/plugins/daterangepicker/daterangepicker.js"></script>
 <script src="assets_admin/plugins/select2/js/select2.full.min.js"></script>
-<script src="assets/js/mixins.jp.js"></script>
+<script src="assets/js/mixin.jp.js"></script>
 <script type="text/javascript">
   var datatable;
   var params;

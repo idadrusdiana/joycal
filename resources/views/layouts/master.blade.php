@@ -30,15 +30,9 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-12 col-md-12" style="margin: 20px 0; text-align:center">
             <h1>@yield('header')</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
-            </ol>
-          </div>
+          </div>                   
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -71,6 +65,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="assets_admin/dist/js/demo.js"></script>
 <!-- Page specific script -->
+
 @stack('script')
 </body>
 </html>

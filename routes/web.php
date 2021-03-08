@@ -29,13 +29,10 @@ Route::get('/', function () {
 
 // Route::get('/sendemail', [emailController::class, 'index']);
 // Route::get('/joycal_hanazono', [PublicController::class, 'home']);
-// Route::post('/send-response', [PublicController::class, 'sendResponse']);
-
-// Route::get('/flat7_ashikaga', [PublicController::class, 'flat7Index']);
+// Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
 // Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
 
-// Route::get('/flat7_ashikaga', [PublicController::class, 'flat7Index']);
-// Route::post('/send-response-flat7', [PublicController::class, 'sendResponseFlat7']);
+Route::post('/send-response', [PublicController::class, 'sendResponse']);
 
 Route::get('/apply/{store}', [PublicController::class, 'home']);
 
@@ -46,8 +43,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'home']);
     Route::get('/responses', [AdminController::class, 'responses']);
-    Route::get('/change-status/{id}', [AdminController::class, 'changeStatus']);    
-    
+    Route::get('/change-status/{id}', [AdminController::class, 'changeStatus']);       
     Route::group(['middleware' => 'superadmin'], function () {
         Route::get('/account', [AccountController::class, 'index']);
         Route::post('/account/create',[AccountController::class, 'create']);
